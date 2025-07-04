@@ -8,10 +8,11 @@
 <style>
       body {
         margin: 0;
-        font-family: 'Arial Black', Arial, sans-serif;
+        font-family: 'Arial Black', Arial, sans-serif, 'Battlest';
         background: #ffffff;
-      }
       
+
+
       /* Panel de control para cambiar vistas */
       .view-controls {
       position: fixed;
@@ -83,7 +84,11 @@
           right: 5%;
         }
       }
-   
+   }
+      @font-face {
+  font-family: 'Battlest';
+   src:"Fonts/Battlest.fnt";
+}
     </style>
 </head>
 <body>
@@ -100,6 +105,7 @@
 </div>
 <button id="toggle-ui-btn" position="0 5 -200" style="z-index: 9999;">Mostrar Productos</button><a-scene>
 <a-assets>
+  <a-asset-item id="font-battlest" src="Fonts/Battlest.fnt"></a-asset-item>
 <!-- Mixins con mejor iluminación para GLB -->
 <a-mixin id="gaming-metal" material="roughness: 0.4; metalness: 0.6; color: #415A77; emissive: #003366; emissiveIntensity: 0.5"></a-mixin>
 <a-mixin id="neon-glow" material="roughness: 0.0; metalness: 1.0; emissive: #00FFFF; emissiveIntensity: 1.2"></a-mixin>
@@ -127,7 +133,7 @@
 </a-animation>
 </a-text>
 <!-- Glow externo (duplicado más grande con opacidad baja) -->
-<a-text color="#FF99CC" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt" opacity="100" position="-100 250 -350" rotation="10 0 0" src="Fonts/Exo2Bold.fnt" value="BIENVENIDOS A\nFUSION-ART" width="1000">
+<a-text color="#FF99CC" font="https://cdn.aframe.io/fonts/Exo2Bold.fnt" opacity="100" position="-100 250 -350" rotation="10 0 0" src="Fonts/BATTLEST.fnt" value="BIENVENIDOS A\nFUSION-ART" width="1000">
 <a-animation attribute="opacity" direction="alternate" dur="1500" repeat="indefinite" values="0.15; 0.4; 0.15">
 </a-animation>
 </a-text>
@@ -199,8 +205,13 @@
 <a-plane class="clickable" color="#f700ff" height="0.8" id="next-tattoo" position="12.5 0 0.5" text="value: ➡; aling: center; color: white" width="0.8"></a-plane>
 </a-entity>
 <!-- Botón TATTOO -->
-<a-entity id="btn-tattoo" position="0 2 100" rotation="0 180 0">
-<a-plane class="clickable" color="purple" event-set__enter="_event: mouseenter; scale: 1.1 1.1 1" event-set__leave="_event: mouseleave; scale: 1 1 1" height="1" material="shader: flat" text="value: Ver TATTOO; aling: center; color: white; width: 5" width="3">
+<a-entity id="btn-tattoo" position="0 5 100" rotation="0 180 0">
+<a-plane class="clickable" color="purple" event-set__enter="_event: mouseenter; scale: 1.1 1.1 1"
+ event-set__leave="_event: mouseleave; scale: 1 1 1" 
+ height="2" 
+ material="shader: flat" 
+ text="value: Ver TATTOO; aling: center; color: white; width: 5" 
+ width="5">
 </a-plane>
 </a-entity>
 <a-gltf-model mixin="bright-glb" position="0 20 0" scale="20 20 40" shadow="cast: true" src="GBL/ENTRADA.glb">
@@ -208,12 +219,14 @@
 <a-light color="#FFFFFF" distance="10" intensity="1.5" position="0 2 0" type="point"></a-light>
 </a-gltf-model>
 <!-- ========== ESTACIÓN 1: FOTOGRAFÍA ========== -->
-<a-box animation="property: material.emissiveIntensity; to: 0.6; dur: 2000; dir: alternate; loop: true" depth="90" height="1" material="roughness: 0.3; metalness: 0.7; color: #ffffff; emissive: #5b16c4; emissiveIntensity: 0.4" position="0 0 -200" shadow="cast: true; receive: true" width="50">
+<a-box animation="property: material.emissiveIntensity; to: 0.6; dur: 2000; dir: alternate; loop: true" depth="120" height="1" material="roughness: 0.3; metalness: 0.7; color: #ffffff; emissive: #ffffff; emissiveIntensity: 0.4" position="0 0 -200" shadow="cast: true; receive: true" width="120">
 </a-box>
+<a-text aling="center" rotation="0 0 0" font-family="Battlest" material="emissive: #9966FF; emissiveIntensity: 0.5" position="-80 50 -200"  value="FOTOGRAFOS" width="600">
+</a-text>
 <!-- MODELOS GLB CON MEJOR ILUMINACIÓN -->
 
-<a-entity id="btn-photo" position="0 2 -190">
-<a-plane class="clickable" color="pink" event-set__enter="_event: mouseenter; scale: 1.1 1.1 1" event-set__leave="_event: mouseleave; scale: 1 1 1" height="1" material="shader: flat" text="value: Ver Catálogo; aling: center; color: white; width: 5" width="3">
+<a-entity id="btn-photo" position="0 5 -130">
+<a-plane class="clickable" color="#000000" event-set__enter="_event: mouseenter; scale: 5 5 5" event-set__leave="_event: mouseleave; scale: 5 5 5" height="4" material="shader: flat" text="value: Ver Catálogo; aling: center; color: white; width:0 height:20 " width="8">
 </a-plane>
 </a-entity>
 <!-- Cámara con luces adicionales -->
@@ -221,16 +234,16 @@
 <!-- Luz puntual para iluminar el modelo -->
 <a-light color="#FFFFFF" distance="10" intensity="1.5" position="-25 3 -160" type="point"></a-light>
 </a-gltf-model>
-<a-gltf-model  mixin="bright-glb" position="0 8 -160" scale="10 10 10"  rotatate="0 90 0" shadow="cast: true" src="img/fotografia1glb.glb">
+<a-gltf-model  mixin="bright-glb" position="25 12 -160" scale="12 12 12"  rotatate="0 90 0" shadow="cast: true" src="img/fotografia1glb.glb">
 <!-- Luz puntual para iluminar el modelo -->
-<a-light color="#FFFFFF" distance="10" intensity="1.5" position="-25 3 -160" type="point"></a-light>
+<a-light color="#FFFFFF" distance="10" intensity="1.5" position="25 12 -160" type="point"></a-light>
 </a-gltf-model>
-<a-gltf-model  mixin="bright-glb" position="25 14 -240" scale="50 50 50" rotatate="0 90 0" shadow="cast: true" src="img/fotografia2.glb">
+<a-gltf-model  mixin="bright-glb" position="25 18 -240" scale="100 50 20" rotatate="0 90 0" shadow="cast: true" src="img/fotografia2.glb">
 <!-- Luz puntual para iluminar el modelo -->
-<a-light color="#FFFFFF" distance="10" intensity="1.5" position="0 8.5 -210" type="point"></a-light>
+<a-light color="#FFFFFF" distance="10" intensity="1.5" position="25 18 -240" type="point"></a-light>
 </a-gltf-model>
-<a-gltf-model mixin="bright-glb" position="10 1 -220" rotation="0 250 0" scale="1.5 1.5 1.5" shadow="cast: true" src="GBL/TvTrip.glb">
-<a-light color="#FFFFFF" distance="8" intensity="1.2" position="-25 3 -160" type="point"></a-light>
+<a-gltf-model mixin="bright-glb" position="-55 1 -250" rotation="0 -65 0" scale="4 4 4" shadow="cast: true" src="GBL/TvTrip.glb">
+<a-light color="#FFFFFF" distance="8" intensity="1.2" position="-55 1 -250" type="point"></a-light>
 </a-gltf-model>
 <a-gltf-model mixin="bright-glb" position="0 8.5 -210" scale="8 8 8" shadow="cast: true" src="GBL/camaleonFotografo.glb">
 <a-light color="#FFFFFF" distance="6" intensity="1.0" position="0 1 -200" type="point"></a-light>
@@ -238,55 +251,63 @@
 <a-entity id="carousel-photo" position="0 2 -200" scale="0 0 0" visible="false">
 <a-entity id="card-photo-container">
 <!-- Tarjeta 1 -->
-<a-entity position="0 0 0">
-<a-image height="5" src="img/ArtS/Xanders1.jpg" width="4"></a-image>
-<a-text aling="center" color="#fff" position="0 -1.4 0" value="Producto 1" width="6"></a-text>
+<a-entity position="-50 8 0">
+<a-image height="50" src="img/ArtS/Xanders1.jpg" width="48" position="0 10 0"></a-image>
+<a-text aling="center" color="#fff" position="0 8 0" value="Producto 1" width="2"></a-text>
 </a-entity>
 <!-- Tarjeta 2 -->
-<a-entity position="5 0 0">
-<a-image height="5" src="img/ArtS/Xanders2.jpg" width="4"></a-image>
-<a-text aling="center" color="#fff" position="0 -1.4 0" value="Producto 2" width="6"></a-text>
+<a-entity position="0 8 0">
+<a-image height="50" src="img/ArtS/Xanders2.jpg" width="48" position="0 10 0"></a-image>
+<a-text aling="center" color="#fff" position="0 8 0" value="Producto 2" width="2"></a-text>
 </a-entity>
 <!-- Tarjeta 3 -->
-<a-entity position="10 0 0">
-<a-image height="2" src="img/ArtS/Xanders3.jpg" width="3"></a-image>
-<a-text aling="center" color="#fff" position="0 -1.4 0" value="Producto 3" width="6"></a-text>
+<a-entity position="50 8 0">
+<a-image height="50" src="img/ArtS/Xanders3.jpg" width="48" position="0 10 0"></a-image>
+<a-text aling="center" color="#fff" position="0 8 0" value="Producto 3" width="2"></a-text>
 </a-entity>
 </a-entity>
 <!-- Botón anterior -->
-<a-plane class="clickable" color="#f700ff" height="0.8" id="prev-photo" position="-2.5 0 0.5" text="value: ⬅; aling: center; color: white" width="0.8"></a-plane>
+<a-plane class="clickable" color="#f700ff" height="3" id="prev-photo" position="-5 5 -130" text="value: ⬅; aling: center; color: white" width="3"></a-plane>
 <!-- Botón siguiente -->
-<a-plane class="clickable" color="#f700ff" height="0.8" id="next-photo" position="12.5 0 0.5" text="value: ➡; aling: center; color: white" width="0.8"></a-plane>
+<a-plane class="clickable" color="#f700ff" height="3" id="next-photo" position="5 5 -130" text="value: ➡; aling: center; color: white" width="3"></a-plane>
 </a-entity>
 <!-- CAMBIE TODOS LOS TEXTOSSSSSSSSSSSSSSSSS-->
-<a-text aling="center" animation="property: rotation; to: 0 5 0; dur: 4000; dir: alternate; loop: true" color="#00FFFF" font="kelsonsans" geometry="primitive: plane; width: 8; height: 2" material="color: #1B263B; opacity: 0.8" position="-22 10 -223" value="FOTOGRAFOS"></a-text>
+<a-text aling="center" rotation="0 -180 0" font-family="Battlest" material="emissive: #9966FF; emissiveIntensity: 0.5" position="50 50 160"  value="TATTOO" width="600">
+</a-text>
+
+
+<!-- ========== ESTACIÓN 2: TATTOO ========== -->
+
 <!-- ==========  ESTUDIO DE TATTOO ========== -->
 <a-entity id="tattoo-zone" position="0 0 150" rotation="0 180 0">
 <!-- Piso -->
-<a-box color="#0a0a0a" depth="80" height="1" metalness="0.2" roughness="0.5" shadow="" width="60"></a-box>
+<a-box color="#0a0a0a" depth="100" height="0.5" metalness="0.6" roughness="0.8" shadow="" width="100"></a-box>
 <!-- Paredes -->
-<a-box color="#1a1a1a" depth="1" height="20" position="0 10 -30" width="60"></a-box>
-<a-box color="#1a1a1a" depth="60" height="20" position="-30 10 0" width="1"></a-box>
-<a-box color="#1a1a1a" depth="60" height="20" position="30 10 0" width="1"></a-box>
+<a-box color="#1a1a1a" depth="1" height="80" position="0 10 -50" width="100"></a-box>
+
 <!-- Luces dramáticas -->
-<a-light angle="45" intensity="1.5" position="0 15 150" target="#camilla" type="spot"></a-light>
-<a-light color="#550022" intensity="0.4" type="ambient"></a-light>
+<a-light angle="180" intensity="100" position="0 10 0" target="#camilla" type="spot"></a-light>
+<a-light color="#550022" intensity="2" type=""></a-light>
+<a-entity light="type: hemisphere; color: #33C; groundColor: #3C3; intensity: 0.8" position="15 3 -25"></a-entity>
 <!-- Camilla -->
-<a-gltf-model id="camilla" mixin="bright-glb" position="0 0 0" scale="5 5 5" src="GBL/Camilla.glb"></a-gltf-model>
+<a-gltf-model id="camilla" mixin="bright-glb" position="-10 3 25" scale="12 12 12" rotation="0 40 0" src="GBL/Camilla.glb"></a-gltf-model>
 <!-- Mesa de trabajo -->
-<a-gltf-model mixin="bright-glb" position="10 0 0" scale="10 10 10" src="GBL/tatto/MesaTatto.glb"></a-gltf-model>
+<a-gltf-model mixin="bright-glb" position="30 3 0" scale="20 20 20" src="GBL/tatto/MesaTatto.glb"></a-gltf-model>
+<a-gltf-model mixin="bright-glb" position="-20 1 -30" scale="2 2 2" src="GBL/the_graffiti_alchemist.glb"></a-gltf-model>
+
 <!-- Máquina de tatuar con animación -->
-<a-gltf-model animation="property: rotation; to: 0 360 0; loop: true; dur: 4000" mixin="bright-glb" position="45 20 30" scale="0.05 0.05 0.05" src="GBL/MaquinTatto.glb"></a-gltf-model>
-<a-gltf-model animation="property: rotation; to: 0 360 0; loop: true; dur: 4000" mixin="bright-glb" position="-45 20 30" scale="0.05 0.05 0.05" src="GBL/MaquinTatto.glb"></a-gltf-model>
+<a-gltf-model animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" mixin="bright-glb" position="45 50 30" scale="0.05 0.05 0.05" src="GBL/MaquinTatto.glb"></a-gltf-model>
+<a-gltf-model animation="property: rotation; to: 0 360 0; loop: true; dur: 5000" mixin="bright-glb" position="-45 50 30" scale="0.05 0.05 0.05" src="GBL/MaquinTatto.glb"></a-gltf-model>
 
 <!-- Personaje tatuador -->
-<a-gltf-model mixin="bright-glb" position="-10 8 0" scale="8 8 8" src="GBL/CamaleonTattoo.glb"></a-gltf-model>
-<!-- Texto flotante -->
-<a-text aling="center" animation="property: rotation; to: 0 0 0; dur: 10000; loop: true" color="#FF007F" font="https://cdn.aframe.io/fonts/Exo2SemiBold.fnt" position="0 20 30" shader="" value="⚡ Tatuadores ⚡" width="250"></a-text>
+<a-gltf-model mixin="bright-glb" position="0 5 0" scale="8 8 8" src="GBL/CamaleonTattoo.glb"></a-gltf-model>
+<!-- Tatuador -->
+<a-gltf-model mixin="bright-glb" position="30 3 -35" rotation="0 120 0" scale="80 80 80" src="GBL/tattoo_artist_altered_alley.glb"></a-gltf-model>
+
 <!-- Partículas ambientales -->
-<a-entity particle-system="preset: dust; particleCount: 3000; color: #ff007f, #440011;" position="0 5 0"></a-entity>
+<a-entity particle-system="preset: dust; particleCount: 3000; color: #ff007f, #440011;" position="30 5 0"></a-entity>
 <!-- Sonido de fondo -->
-<a-sound autoplay="true" loop="true" position="0 2 0" src="url(sounds/tattoo-machine.mp3)" volume="0.3"></a-sound>
+<a-sound autoplay="true" loop="true" position="0 0 0" src="sound/Barrows and Sun - One - Stripped Version.mp3" volume="0.8"></a-sound>
 </a-entity>
 <!-- ========== ESTACIÓN 3: DJ - ZONA dj ========== -->
 <a-entity id="dj-stage" position="-200 0 0">
@@ -298,60 +319,70 @@
 <a-light color="#FFFFFF" distance="20" intensity="2.5" position="0 3 0" type="point"></a-light>
 </a-gltf-model>
 <!-- DJ Set -->
-<a-gltf-model mixin="bright-glb" position="0 15 -8" rotation="0 45 0" scale="1 1 1" shadow="cast: true" src="GBL/dj_set.glb">
+<a-gltf-model mixin="bright-glb" position="50 0.2 5" rotation="0 90 0" scale="5 5 5" shadow="cast: true" src="GBL/dj_set.glb">
 <a-light color="#FFFFFF" distance="15" intensity="2.5" position="2 2 2" type="point"></a-light>
 </a-gltf-model>
-<a-gltf-model mixin="bright-glb" position="-8 15 -8" rotation="0 -45 0" scale="1 1 1" shadow="cast: true" src="GBL/dj_set.glb">
+<a-gltf-model mixin="bright-glb" position="14 15 15" rotation="0 45 0" scale="1 1 1" shadow="cast: true" src="GBL/dj_set.glb">
+<a-light color="#FFFFFF" distance="15" intensity="2.5" position="2 2 2" type="point"></a-light>
+</a-gltf-model>
+<a-gltf-model mixin="bright-glb" position="14 15 -6" rotation="0 135 0" scale="1 1 1" shadow="cast: true" src="GBL/dj_set.glb">
 <a-light color="#FFFFFF" distance="15" intensity="2.5" position="2 2 2" type="point"></a-light>
 </a-gltf-model>
 <!-- Personaje DJ -->
-<a-gltf-model mixin="bright-glb" position="-8 15 -8" rotation="0 90 0" scale="8 8 8" shadow="cast: true" src="GBL/CamaleonGuitarrista1.glb">
+<a-gltf-model mixin="bright-glb" position="5 15 5" rotation="0 90 0" scale="8 8 8" shadow="cast: true" src="GBL/Chameleon_DJ_0626171824_texture.glb">
+<a-light color="#FFFFFF" distance="12" intensity="2.0" position="0 2 0" type="point"></a-light>
+</a-gltf-model>
+<!-- Audifonos -->
+<a-gltf-model mixin="bright-glb" position="-10 40 8" rotation="0 90 0" scale="150 150 150" shadow="cast: true" src="GBL/headphones_improved.glb">
 <a-light color="#FFFFFF" distance="12" intensity="2.0" position="0 2 0" type="point"></a-light>
 </a-gltf-model>
 <!-- Texto flotante -->
-<a-text aling="center" rotation="0 90 0" color="pink" font="kelsonsans" material="emissive: #9966FF; emissiveIntensity: 0.5" position="5 100 22"  value="DJ" width="1000">
+<a-text aling="center" rotation="0 90 0" font-family="Battlest" material="emissive: #9966FF; emissiveIntensity: 0.5" position="5 100 22"  value="DJ" width="1000">
 </a-text>
 <!-- Efectos y Luces -->
-<a-sphere animation="property: material.emissiveIntensity; to: 0.2; dur: 200; dir: alternate; loop: true" material="color: #FF0066; emissive: #FF0066; emissiveIntensity: 2.0" position="0 18 -10"  rotation="0 90 0" radius-inner="80" radius-outer="88">="0.3">
-<a-light color="#FF0066" distance="20" intensity="3.0" type="point"></a-light>
+<a-sphere animation="property: material.emissiveIntensity; to: 0.2; dur: 200; dir: alternate; loop: true" material="color: #ff3030; emissive: #df1ac0; emissiveIntensity: 2.0" position="-50 15 5"  rotation="0 90 0" radius-inner="100" radius-outer="100">
+<a-light color="#00e3ff" distance="100" intensity="10" type="point"></a-light>
 </a-sphere>
-<a-ring animation="property: material.color; to: #FF0066; dur: 800; dir: alternate; loop: true" material="color: #9966FF; emissive: #9966FF; emissiveIntensity: 0.8" position="0 18 -10" rotation="0 90 0" radius-inner="80" radius-outer="90">
+<a-ring animation="property: material.color; to: #ffc269; dur: 200; dir: alternate; loop: true" material="color: #dde400; emissive: #46e400; emissiveIntensity: 0.8" position="-50 18 5" rotation="0 90 0" radius-inner="10" radius-outer="20">
 </a-ring>
 </a-entity>
 <!-- ========== ESTACIÓN 4: CONCIERTO  ========== -->
 <a-entity id="concert-stage" position="200 0 0">
 <!-- Piso -->
-<a-box animation="property: material.emissiveIntensity; to: 0.8; dur: 1500; dir: alternate; loop: true" color="#1B263B" depth="60" height="1" material="roughness: 0.4; metalness: 0.8; emissive: #FFAA00; emissiveIntensity: 0.5" shadow="" width="60">
+<a-box animation="property: material.emissiveIntensity; to: 0.8; dur: 1500; dir: alternate; loop: true" color="#1B263B" depth="180" height="1" material="roughness: 0.4; metalness: 0.8; emissive: #FFAA00; emissiveIntensity: 0.5" shadow="" width="60">
 </a-box>
 <!-- Tarima escenario -->
 <a-gltf-model mixin="bright-glb" position="0 0.1 0" rotation="0 90 0" scale="5 5 5" shadow="cast: true" src="GBL/escenario.glb">
-<a-light color="#FFFFFF" distance="20" intensity="2.5" position="0 4 0" type="point"></a-light>
+<a-light color="fd00f4" distance="20" intensity="2.5" position="0 4 0" type="point"></a-light>
 </a-gltf-model>
 <!-- Batería -->
-<a-gltf-model mixin="bright-glb" position="-12 2 4" scale="10 10 10" shadow="cast: true" src="GBL/bateria.glb">
-<a-light angle="30" color="#FFCC00" distance="15" intensity="2.0" position="-12 10 4" type="spot"></a-light>
+<a-gltf-model mixin="bright-glb" position="18 8 8" scale="15 15 15" rotation="0 -180 0" shadow="cast: true" src="GBL/bateria.glb">
+<a-light angle="30" color="#FFCC00" distance="15" intensity="2.0" position="18 8 8" type="spot"></a-light>
 </a-gltf-model>
 <!-- Guitarra colgante -->
-<a-gltf-model mixin="bright-glb" position="0 8 2" scale="10 10 10" shadow="cast: true" src="GBL/guitar.glb"></a-gltf-model>---
+<a-gltf-model mixin="bright-glb" position="-15 8 -20" scale="20 20 20" rotation="0 -90 0" shadow="cast: true" src="GBL/guitar.glb"></a-gltf-model>
 <!-- Músico guitarrista -->
-<a-gltf-model mixin="bright-glb" position="12 8 0" scale="4 4 4" shadow="cast: true" src="GBL/CamaleonGuitarrista1.glb">
-<a-light angle="30" color="#FF6600" distance="25" intensity="3.0" position="12 15 0" type="spot"></a-light>
+<a-gltf-model mixin="bright-glb" position="-20 16 20" scale="8 8 8" rotation="0 -90 0" shadow="cast: true" src="GBL/CamaleonGuitarrista1.glb">
+<a-light angle="30" color="#FF6600" distance="25" intensity="3.0" position="-20 20 20" type="spot"></a-light>
+</a-gltf-model>
+<a-gltf-model mixin="bright-glb" position="50 10 -70" scale="70 70 70" rotation="0 185 0" shadow="cast: true" src="GBL/speakers_low_poly.glb">
+<a-light angle="30" color="#FF6600" distance="25" intensity="3.0" position="50 15 -70" type="spot"></a-light>
 </a-gltf-model>
 <!-- Pantalla LED psicodélica -->
-<a-plane animation__color="property: material.color; to: #FF00FF; dur: 1200; dir: alternate; loop: true" animation__rotation="property: rotation; to: 0 360 0; dur: 50000; loop: true" height="20" material="shader: flat; src: #psy-texture; transparent: true; opacity: 0.95" position="0 10 -30" rotation="0 0 0" width="40">
+<a-plane animation__color="property: material.color; to: #FF00FF; dur: 3000; dir: alternate; loop: true" height="60" material="shader: flat; src: #psy-texture; transparent: true; opacity: 0.95" position="35 40 0" rotation="0 -90 0" width="110">
 </a-plane>
 <!-- Luz pulsante desde pantalla -->
-<a-sphere animation="property: material.emissiveIntensity; to: 0.3; dur: 400; dir: alternate; loop: true" material="color: #FF00FF; emissive: #FF00FF; emissiveIntensity: 1.5" position="0 10 -28" radius="0.4">
+<a-sphere animation="property: material.emissiveIntensity; to: 0.3; dur: 400; dir: alternate; loop: true" material="color: #FF00FF; emissive: #FF00FF; emissiveIntensity: 1.5" position="30 40 0" radius="0.4">
 <a-light animation="property: intensity; to: 0.5; dur: 400; dir: alternate; loop: true" color="#FF00FF" distance="30" intensity="2.5" type="point"></a-light>
 </a-sphere>
 <!-- Texto flotante -->
-<a-text aling="center" animation="property: rotation; to: 0 8 0; dur: 3000; dir: alternate; loop: true" color="#FFAA00" font="kelsonsans" material="color: #000; opacity: 0.9; emissive: #FFAA00; emissiveIntensity: 0.6" position="0 12 10" value="🎤 FUSION LIVE 🎤" width="20">
+<a-text aling="center" rotation="0 -90 0" font-family="Battlest" material="emissive: #9966FF; emissiveIntensity: 0.5" position="100 120 -65"  value="LIVE" width="1000">
 </a-text>
 <!-- Luces giratorias -->
-<a-cylinder animation="property: rotation; to: 0 360 0; dur: 2000; loop: true" height="0.8" material="color: #FFFF00; emissive: #FFFF00; emissiveIntensity: 1.5" position="-10 5 10" radius="0.2">
+<a-cylinder animation="property: rotation; to: 0 360 0; dur: 2000; loop: true" height="0.8" material="color: #FFFF00; emissive: #FFFF00; emissiveIntensity: 1.5" position="-10 10 10" radius="0.2">
 <a-light angle="25" animation="property: rotation; to: 0 45 0; dur: 1500; dir: alternate; loop: true" color="#FFFF00" distance="30" intensity="2.0" type="spot"></a-light>
 </a-cylinder>
-<a-cylinder animation="property: rotation; to: 0 -360 0; dur: 2000; loop: true" height="0.8" material="color: #00FFFF; emissive: #00FFFF; emissiveIntensity: 1.5" position="10 5 10" radius="0.2">
+<a-cylinder animation="property: rotation; to: 0 -360 0; dur: 2000; loop: true" height="0.8" material="color: #00FFFF; emissive: #00FFFF; emissiveIntensity: 1.5" position="10 10 10" radius="0.2">
 <a-light angle="25" animation="property: rotation; to: 0 -45 0; dur: 1500; dir: alternate; loop: true" color="#00FFFF" distance="30" intensity="2.0" type="spot"></a-light>
 </a-cylinder>
 <!-- Partículas ambientales -->
